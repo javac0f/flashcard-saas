@@ -1,7 +1,8 @@
 'use client'
 
 import Image from "next/image";
-import {getStripe, checkoutSession, checkoutSessionJson} from '@/utils/get-stripe'
+import {GetStripe} from '@/utils/get-stripe'
+import { checkoutSession, checkoutSessionJson} from '/utils/get-stripe'
 import {SignedIn, SignedOut, UserButton} from '@clerk/nextjs'
 import {Toolbar, Typography, Container, AppBar, Button, Box, Grid} from "@mui/material"
 import Head from 'next/head'
@@ -24,7 +25,7 @@ export default function Home() {
       return
     }
   
-    const stripe = await getStripe()
+    const stripe = await GetStripe()
     const {error} = await stripe.redirectToCheckout({
       sessionId: checkout
     })
@@ -141,7 +142,7 @@ export default function Home() {
                 {' '}
                 Basic functionality and limited storage
               </Typography>  
-              <Button variant = "contained" color = "primary" sx = {{mt:2}}>Choose Basic</Button> 
+              <Button variant = "contained" color = "primary" sx = {{mt:2}} onClick = {handleSubmit}>Choose Basic</Button> 
             </Box>  
           </Grid>        
 
