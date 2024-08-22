@@ -1,8 +1,8 @@
 import Image from "next/image";
 import getStripe from '@/utils/get-stripe'
 import {SignedIn, SignedOut, UserButton} from '@clerk/nextjs'
-import { Toolbar, Typography, Container, Head, AppBar, Button} from "@mui/material";
-
+import {Toolbar, Typography, Container, AppBar, Button} from "@mui/material"
+import {Head} from 'next/head'
 export default function Home() {
 
   return(
