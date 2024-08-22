@@ -1,12 +1,22 @@
+'use client'
+
+import {useEffect, useState} from 'react'
+import {useRouter} from 'next/navigation'
+import {getStripe} from '@/utils/get-stripe'
+import {useSearchParams} from 'next/navigation'
+import {CircularProgress, Typography, Box, Container, } from '@mui/material'
+
+
 const ResultPage = () => {
     const router = useRouter()
     const searchParams = useSearchParams()
     const session_id = searchParams.get('session_id')
+
     const [loading, setLoading] = useState(true)
     const [session, setSession] = useState(null)
     const [error, setError] = useState(null)
   
-    // ... (rest of the component)
+
     useEffect(() => {
         const fetchCheckoutSession = async () => {
           if (!session_id) return
@@ -30,7 +40,7 @@ const ResultPage = () => {
 
       if (loading) {
         return (
-          <Container maxWidth="sm" sx={{textAlign: 'center', mt: 4}}>
+          <Container maxWidth="100vw" sx={{textAlign: 'center', mt: 4}}>
             <CircularProgress />
             <Typography variant="h6" sx={{mt: 2}}>
               Loading...
@@ -40,7 +50,7 @@ const ResultPage = () => {
       }
       if (error) {
         return (
-          <Container maxWidth="sm" sx={{textAlign: 'center', mt: 4}}>
+          <Container maxWidth="100vw" sx={{textAlign: 'center', mt: 4}}>
             <Typography variant="h6" color="error">
               {error}
             </Typography>

@@ -5,6 +5,8 @@ import Stripe from 'stripe'
 const formatAmountForStripe = (amount) => {
     return Math.round(amount * 100)
 }
+
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2022-11-15',
 })
@@ -12,7 +14,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 export async function POST(req) {
   try {
     const params = {
-        submit_type: 'subscription',
+        mode: 'subscription',
         payment_method_types: ['card'],
         line_items: [
             {
@@ -49,7 +51,7 @@ export async function POST(req) {
 }
 
 export async function GET(req) {
-    const searchParams = req.nextUrl.searchParams
+    const searchParams = req.nextUrl.searchParams()
     const session_id = searchParams.get('session_id')
   
     try {
@@ -58,8 +60,8 @@ export async function GET(req) {
       }
   
       const checkoutSession = await stripe.checkout.sessions.retrieve(session_id)
-  
       return NextResponse.json(checkoutSession)
+
     } catch (error) {
       console.error('Error retrieving checkout session:', error)
       return NextResponse.json({ error: { message: error.message } }, { status: 500 })

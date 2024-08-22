@@ -6,9 +6,9 @@ import Link from 'next/link'
 
 export default function SignInPage(){
     return (
-        <Container maxWidth = "sm">
+        <Container maxWidth = "100vw" gutterBottom>
 
-            <AppBar position="static" sx={{backgroundColor: '#3f51b5'}}>
+            <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" sx={{flexGrow: 1}}>
                     Flashcard SaaS

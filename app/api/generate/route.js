@@ -24,8 +24,8 @@ export async function POST(req) {
           { role: 'system', content: systemPrompt },
           { role: 'user', content: data },
         ],
-        model: 'gpt-4o',
-        response_format: { type: 'json_object' },
+        model: 'gpt-3.5-turbo',
+        response_format: { type: 'json_object'},
       })
     
     // Parse the JSON response from the OpenAI API
