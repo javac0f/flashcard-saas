@@ -1,4 +1,4 @@
-#Project 1 for the Headstarter AI Fellowship
+# Project 1 for the Headstarter AI Fellowship
 ---
 
 ## Getting Started
